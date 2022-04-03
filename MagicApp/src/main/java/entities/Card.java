@@ -14,6 +14,11 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
     private String name;
 
     @Basic(optional = false)

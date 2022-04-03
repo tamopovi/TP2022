@@ -9,6 +9,10 @@ public class CardPrinting {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    public Integer getId() {
+        return id;
+    }
+
     @ManyToOne(optional = false)
     private Card card;
 

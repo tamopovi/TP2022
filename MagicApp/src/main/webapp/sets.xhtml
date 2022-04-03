@@ -16,7 +16,10 @@
     <h2>Sets:</h2>
     <ol>
         <ui:repeat value="#{sets.allSets}" var="set">
-            <li>Name: #{set.name}; code: #{set.code}</li>
+            <li>
+                <h:link value="#{set.name}" outcome="set?setId=#{set.id}" />
+            </li>
+
         </ui:repeat>
     </ol>
 

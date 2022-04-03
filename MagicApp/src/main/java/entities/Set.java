@@ -16,6 +16,10 @@ public class Set {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    public Integer getId() {
+        return id;
+    }
+
     private String name;
 
     @Basic
