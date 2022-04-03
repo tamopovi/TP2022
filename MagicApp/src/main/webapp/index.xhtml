@@ -2,22 +2,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 <h:head/>
 <h:body>
-    <h2>Creating a new set!</h2>
-    <h:form>
-        <h:inputText value="#{sets.setToCreate.name}" label="Set Name: "></h:inputText>
-        <h:inputText value="#{sets.setToCreate.code}" label="Set Code"></h:inputText>
-        <h:commandButton value="Create new set" actionListener="#{sets.createSet}" action="index?faces-redirect=true"/>
-    </h:form>
-
-    <h2>Sets:</h2>
-    <ol>
-        <ui:repeat value="#{sets.allSets}" var="set">
-            <li>Name: #{set.name}; code: #{set.code}</li>
-        </ui:repeat>
-    </ol>
+    <h2>Welcome to magic app!</h2>
+    <h:link value="Sets" outcome="sets.xhtml" />
+    <h:link value="Cards" outcome="cards.xhtml" />
 </h:body>
 </html>

@@ -1,10 +1,15 @@
 package entities;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
+@Named
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Card.findAll", query = "select c from Card as c")
+})
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

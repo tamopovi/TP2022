@@ -26,6 +26,9 @@ public class Sets {
     @Getter
     private List<Set> allSets;
 
+    @Getter
+    private Set singleSet;
+
     @PostConstruct
     public void init(){
         loadAllSets();
@@ -38,5 +41,9 @@ public class Sets {
 
     private void loadAllSets(){
         this.allSets = setsDAO.loadAll();
+    }
+
+    private void loadSingleSet(Integer id){
+        this.singleSet = setsDAO.findOne(id);
     }
 }
