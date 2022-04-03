@@ -1,21 +1,20 @@
 package entities;
 
+import javax.inject.Named;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
+@Named
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Set.findAll", query = "select s from Set as s")
+})
 public class Set {
-    private String id;
 
-    @GeneratedValue
     @Id
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String name;
 
@@ -28,6 +27,7 @@ public class Set {
         this.name = name;
     }
 
+    @Size(max = 3,min = 3)
     private String code;
 
     @Basic
@@ -39,9 +39,10 @@ public class Set {
         this.code = code;
     }
 
+    @ManyToMany
     private List<Card> setCardList;
 
-    @ManyToMany
+
     public List<Card> getSetCardList(){
         return setCardList;
     }

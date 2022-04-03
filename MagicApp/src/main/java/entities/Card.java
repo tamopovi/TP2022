@@ -6,18 +6,9 @@ import java.util.List;
 
 @Entity
 public class Card {
-    private Long id;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
 
     @Basic(optional = false)
@@ -29,20 +20,21 @@ public class Card {
         this.name = name;
     }
 
+    @OneToMany(mappedBy = "card")
     List<CardPrinting> cardPrintings;
 
-    @OneToMany(mappedBy = "card")
+
+    public void setCardPrintings(List<CardPrinting> cardPrintings) {
+        this.cardPrintings = cardPrintings;
+    }
+
     public List<CardPrinting> getCardPrintings(){
         return cardPrintings;
     }
 
-    public void setCardPrintings(List<CardPrinting> cardPrintings){
-        this.cardPrintings = cardPrintings;
-    }
-
+    @ManyToMany(mappedBy = "setCardList")
     private List<Set> cardSets;
 
-    @ManyToMany(mappedBy = "setCardList")
     public List<Set> getCardSets(){
         return cardSets;
     }

@@ -1,27 +1,17 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class CardPrinting {
-    private String id;
 
-    @GeneratedValue
     @Id
-    public String getId() {
-        return id;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    @ManyToOne(optional = false)
     private Card card;
 
-    @ManyToOne
     public Card getCard() {
         return card;
     }
