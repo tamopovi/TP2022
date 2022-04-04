@@ -11,7 +11,15 @@
     <h2>Set name:#{setDetails.set.name}</h2>
     <h2>Set code:#{setDetails.set.code}</h2>
     <h2>Set size:#{fn:length(setDetails.set.setCardList)}</h2>
+    <br/>
 
+    <h2>Add card to set:</h2>
+    <h:selectOneMenu value="#{card.name}">
+        <f:selectItems value="#{cards.allCards}" var="c"
+                       itemLabel="#{c.name}" itemValue="#{c.name}" />
+    </h:selectOneMenu>
+    <br/>
+    <h2>Cards in set:#{fn:length(setDetails.set.setCardList)}</h2>
     <ol>
         <ui:repeat value="#{setDetails.set.setCardList}" var="card">
             <li>

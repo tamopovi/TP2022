@@ -3,6 +3,7 @@ package entities;
 import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.List;
 
 @Named
@@ -53,5 +54,16 @@ public class Set {
 
     public void setSetCardList(List<Card> setCardList) {
         this.setCardList = setCardList;
+    }
+
+    @OneToMany(mappedBy = "printedCardSet")
+    private List<CardPrinting> printedCardSet;
+
+    public List<CardPrinting> getPrintedCardSet() {
+        return printedCardSet;
+    }
+
+    public void setPrintedCardSet(List<CardPrinting> printedCardSet) {
+        this.printedCardSet = printedCardSet;
     }
 }

@@ -2,7 +2,6 @@ package entities;
 
 import javax.inject.Named;
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Named

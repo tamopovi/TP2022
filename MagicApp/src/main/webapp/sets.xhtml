@@ -8,8 +8,8 @@
 <h:body>
     <h2>Creating a new set!</h2>
     <h:form>
-        <h:inputText value="#{sets.setToCreate.name}" label="Set Name: "></h:inputText>
-        <h:inputText value="#{sets.setToCreate.code}" label="Set Code"></h:inputText>
+        Enter set name: <h:inputText value="#{sets.setToCreate.name}" label="Set Name: "/>
+        Enter set code: <h:inputText value="#{sets.setToCreate.code}" label="Set Code"/>
         <h:commandButton value="Create new set" actionListener="#{sets.createSet}" action="sets?faces-redirect=true"/>
     </h:form>
 
