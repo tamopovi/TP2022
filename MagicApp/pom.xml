@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.vu</groupId>
-  <artifactId>MagicApp</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+    <groupId>org.vu</groupId>
+    <artifactId>MagicApp</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
-  <name>MagicApp Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+    <name>MagicApp Maven Webapp</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -57,9 +57,9 @@
                 <plugin>
                     <groupId>org.mybatis.generator</groupId>
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
-                    <version>1.4.0</version>
+                    <version>1.3.5</version>
                     <configuration>
-                        <contexts>PlayersDB</contexts>
+                        <contexts>MagicDB</contexts>
                         <verbose>true</verbose>
                     </configuration>
                     <executions>
@@ -75,16 +75,6 @@
                             <groupId>com.h2database</groupId>
                             <artifactId>h2</artifactId>
                             <version>1.4.196</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.mybatis</groupId>
-                            <artifactId>mybatis</artifactId>
-                            <version>3.4.4</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.mybatis</groupId>
-                            <artifactId>mybatis-cdi</artifactId>
-                            <version>1.0.0</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -116,30 +106,6 @@
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.mybatis.generator</groupId>
-                    <artifactId>mybatis-generator-maven-plugin</artifactId>
-                    <version>1.3.5</version>
-                    <configuration>
-                        <contexts>PlayersDB</contexts>
-                        <verbose>true</verbose>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>Generate MyBatis Artifacts</id>
-                            <goals>
-                                <goal>generate</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.h2database</groupId>
-                            <artifactId>h2</artifactId>
-                            <version>1.4.195</version>
-                        </dependency>
-                    </dependencies>
                 </plugin>
             </plugins>
         </pluginManagement>
