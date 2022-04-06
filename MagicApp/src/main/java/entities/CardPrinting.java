@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "card_printing")
 @NamedQueries({
         @NamedQuery(name = "CardPrinting.findAll", query = "select c from CardPrinting as c where  c.card.id = :cardId")
 })

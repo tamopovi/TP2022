@@ -7,6 +7,7 @@ import java.util.Objects;
 
 @Named
 @Entity
+@Table(name = "card")
 @NamedQueries({
         @NamedQuery(name = "Card.findAll", query = "select c from Card as c")
 })

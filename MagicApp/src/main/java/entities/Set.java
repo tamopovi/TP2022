@@ -3,12 +3,12 @@ package entities;
 import javax.inject.Named;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 @Named
 @Entity
+@Table(name = "set")
 @NamedQueries({
         @NamedQuery(name = "Set.findAll", query = "select s from Set as s")
 })
