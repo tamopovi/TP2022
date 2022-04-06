@@ -8,10 +8,9 @@
 <h:body>
     <h2>Set name:#{setDetails.set.name}</h2>
     <h2>Set code:#{setDetails.set.code}</h2>
-    <h2>Set size:#{fn:length(setDetails.set.printedCardSet)}</h2>
+    <h2>Set size:#{fn:length(setDetails.set.setCardList)}</h2>
     <br/>
-    <br/>
-    <h2>Cards in set:#{fn:length(setDetails.set.setCardList)}</h2>
+    <h2>Cards in set:</h2>
     <ol>
         <ui:repeat value="#{setDetails.set.setCardList}" var="card">
             <li>
