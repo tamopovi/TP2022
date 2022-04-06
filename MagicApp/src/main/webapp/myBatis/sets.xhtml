@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Creating a new set!</h2>
+    <h:form>
+        Enter set name: <h:inputText value="#{setsMyBatis.setToCreate.name}" label="Set Name: "/>
+        Enter set code: <h:inputText value="#{setsMyBatis.setToCreate.code}" label="Set Code"/>
+        <h:commandButton value="Create new set" actionListener="#{setsMyBatis.createSet}" action="sets?faces-redirect=true"/>
+    </h:form>
+
+    <h2>Sets:</h2>
+    <ol>
+        <ui:repeat value="#{setsMyBatis.allSets}" var="set">
+            <li>
+                <h:link value="#{set.name}" outcome="set?setId=#{set.id}" />
+            </li>
+
+        </ui:repeat>
+    </ol>
+
+    <h:link value="Back to Home" outcome="index.xhtml" />
+</h:body>
+</html>
