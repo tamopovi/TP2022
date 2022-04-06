@@ -65,6 +65,8 @@ public class CardPrintings {
         cardPrintingToCreate.setCard(this.card);
         this.set = this.setsDAO.findOne(printedSetId);
         cardPrintingToCreate.setPrintedCardSet(this.set);
+        int currentSetSize = this.set.getSetCardList().size();
+        cardPrintingToCreate.setSetNumber(currentSetSize+1);
 
 //        System.out.println("HERE CARD: " + cardPrintingToCreate.getCard());
 //        System.out.println("HERE SET: " + cardPrintingToCreate.getPrintedCardSet());

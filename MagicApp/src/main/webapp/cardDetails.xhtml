@@ -30,6 +30,7 @@
         <ui:repeat value="#{cardPrintings.allCardPrintings}" var="cardPrinting">
             <li>
                 <h:link value="#{cardPrinting.printedCardSet.name}" outcome="set?setId=#{set.id}" />
+                Set number: #{cardPrinting.setNumber}
             </li>
 
         </ui:repeat>

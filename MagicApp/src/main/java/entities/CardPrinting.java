@@ -1,5 +1,8 @@
 package entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -16,6 +19,9 @@ public class CardPrinting {
     public Integer getId() {
         return id;
     }
+
+    @Getter @Setter
+    public Integer setNumber;
 
     @ManyToOne(optional = false)
     private Card card;
