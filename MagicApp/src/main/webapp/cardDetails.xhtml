@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://omnifaces.org/ui ">
+<h:head/>
+<h:body>
+    <h2>Card name:#{cardDetails.card.name}</h2>
+    <h2>Amount of printings:#{fn:length(cardDetails.card.cardPrintings)}</h2>
+    <br/>
+
+    <h2>Add card printing:</h2>
+    <h:form>
+        Select a set: <h:selectOneMenu value="#{cardPrintings.printedSetId}">
+        <f:selectItems value="#{sets.allSets}" var="c"
+                       itemLabel="#{c.name}" itemValue="#{c.id}"/>
+    </h:selectOneMenu>
+        <h:commandButton value="Create card printing" actionListener="#{cardPrintings.createCardPrinting}"
+                         action="sets?faces-redirect=true">
+            <f:param name="cardId" value="#{cardDetails.card.id}"/>
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="index" value="Back to home page"/>
+</h:body>
+</html>

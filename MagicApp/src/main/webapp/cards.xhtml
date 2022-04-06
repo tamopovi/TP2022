@@ -8,14 +8,14 @@
 <h:body>
     <h2>Creating a new card!</h2>
     <h:form>
-        <h:inputText value="#{cards.cardToCreate.name}" label="Card Name: "></h:inputText>
+        <h:inputText value="#{cards.cardToCreate.name}" label="Card Name: "/>
         <h:commandButton value="Create new card" actionListener="#{cards.createCard}" action="cards?faces-redirect=true"/>
     </h:form>
 
     <h2>Cards:</h2>
     <ol>
         <ui:repeat value="#{cards.allCards}" var="card">
-            <li>#{card.name}</li>
+            <li><h:link value="#{card.name}" outcome="cardDetails?cardId=#{card.id}" /></li>
         </ui:repeat>
     </ol>
 

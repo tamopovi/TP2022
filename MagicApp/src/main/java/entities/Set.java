@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Named
 @Entity
@@ -65,5 +66,19 @@ public class Set {
 
     public void setPrintedCardSet(List<CardPrinting> printedCardSet) {
         this.printedCardSet = printedCardSet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Set set = (Set) o;
+        return Objects.equals(id, set.id) &&
+                Objects.equals(name, set.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

@@ -14,10 +14,15 @@
     <br/>
 
     <h2>Add card to set:</h2>
-    <h:selectOneMenu value="#{card.name}">
-        <f:selectItems value="#{cards.allCards}" var="c"
-                       itemLabel="#{c.name}" itemValue="#{c.name}" />
-    </h:selectOneMenu>
+    <h:form>
+<!--        <h:selectOneMenu value="#{cardPrintings.cardPrintingToCreate.card}">-->
+<!--            <f:selectItems value="#{cards.allCards}" var="c"-->
+<!--                           itemLabel="#{c.name}" itemValue="#{c}" />-->
+<!--        </h:selectOneMenu>-->
+        <h:commandButton value="Add card to set" actionListener="#{cardPrintings.printCardPrinting(param.setId)}" action="sets?faces-redirect=true">
+            <f:param name="setId" value="#{param.setId}" />
+        </h:commandButton>
+    </h:form>
     <br/>
     <h2>Cards in set:#{fn:length(setDetails.set.setCardList)}</h2>
     <ol>
