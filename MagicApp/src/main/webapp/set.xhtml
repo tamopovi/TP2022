@@ -3,43 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <h:head/>
 <h:body>
     <h2>Set name:#{setDetails.set.name}</h2>
     <h2>Set code:#{setDetails.set.code}</h2>
-    <h2>Set size:#{fn:length(setDetails.set.setCardList)}</h2>
+    <h2>Set size:#{fn:length(setDetails.set.printedCardSet)}</h2>
     <br/>
-
-    <h2>Add card to set:</h2>
-    <h:form>
-<!--        <h:selectOneMenu value="#{cardPrintings.cardPrintingToCreate.card}">-->
-<!--            <f:selectItems value="#{cards.allCards}" var="c"-->
-<!--                           itemLabel="#{c.name}" itemValue="#{c}" />-->
-<!--        </h:selectOneMenu>-->
-        <h:commandButton value="Add card to set" actionListener="#{cardPrintings.printCardPrinting(param.setId)}" action="sets?faces-redirect=true">
-            <f:param name="setId" value="#{param.setId}" />
-        </h:commandButton>
-    </h:form>
     <br/>
-    <h2>Cards in set:#{fn:length(setDetails.set.setCardList)}</h2>
+    <h2>Cards in set:#{fn:length(setDetails.set.printedCardSet)}</h2>
     <ol>
-        <ui:repeat value="#{setDetails.set.setCardList}" var="card">
+        <ui:repeat value="#{setDetails.set.printedCardSet}" var="cardPrinting">
             <li>
-                <h:link value="#{card.name}" outcome="cardDetails?cardId=#{card.id}" />
+                <h:link value="#{cardPrinting.card.name}" outcome="cardDetails?cardId=#{cardPrinting.card.id}" />
             </li>
         </ui:repeat>
     </ol>
-<!--    <h:form>-->
-<!--        <h:inputText a:placeholder="name" value="#{playersForTeam.playerToCreate.name}" required="true" />-->
-<!--        <h:commandButton value="Add player to the team"-->
-<!--                         actionListener="#{playersForTeam.createPlayer}"-->
-<!--                         action="#{'players?faces-redirect=true&amp;teamId='.concat(playersForTeam.team.id)}">-->
-<!--            <f:param name="teamId" value="#{playersForTeam.team.id}" />-->
-<!--        </h:commandButton>-->
-<!--    </h:form>-->
     <h:link outcome="index" value="Back to home page"/>
 </h:body>
 </html>
