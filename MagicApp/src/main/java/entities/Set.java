@@ -14,6 +14,10 @@ import java.util.Objects;
 })
 public class Set {
 
+    public Set(){
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

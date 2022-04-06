@@ -13,6 +13,10 @@ import java.util.Objects;
 })
 public class CardPrinting {
 
+    public CardPrinting (){
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

@@ -12,6 +12,11 @@ import java.util.Objects;
         @NamedQuery(name = "Card.findAll", query = "select c from Card as c")
 })
 public class Card {
+
+    public Card() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
