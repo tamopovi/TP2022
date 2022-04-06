@@ -68,6 +68,12 @@ public class Set {
         this.printedCardSet = printedCardSet;
     }
 
+    public void print() {
+        System.out.println("SET: ");
+        System.out.println("Id: " + this.getId());
+        System.out.println("Name: " + this.getName());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

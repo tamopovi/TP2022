@@ -66,8 +66,10 @@ public class CardPrintings {
         this.set = this.setsDAO.findOne(printedSetId);
         cardPrintingToCreate.setPrintedCardSet(this.set);
 
-        System.out.print("HERE CARD: " + cardPrintingToCreate.getCard());
-        System.out.print("HERE SET: " + cardPrintingToCreate.getPrintedCardSet());
+        System.out.println("HERE CARD: " + cardPrintingToCreate.getCard());
+        System.out.println("HERE SET: " + cardPrintingToCreate.getPrintedCardSet());
+        cardPrintingToCreate.getCard().print();
+        cardPrintingToCreate.getPrintedCardSet().print();
         this.cardPrintingsDAO.persist (cardPrintingToCreate);
     }
 
