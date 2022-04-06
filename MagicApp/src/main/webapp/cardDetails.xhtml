@@ -23,6 +23,17 @@
             <f:param name="cardId" value="#{cardDetails.card.id}"/>
         </h:commandButton>
     </h:form>
+    <br/>
+
+    <h2>Printed in:</h2>
+    <ol>
+        <ui:repeat value="#{cardPrintings.allCardPrintings}" var="cardPrinting">
+            <li>
+                <h:link value="#{cardPrinting.printedCardSet.name}" outcome="set?setId=#{set.id}" />
+            </li>
+
+        </ui:repeat>
+    </ol>
     <h:link outcome="index" value="Back to home page"/>
 </h:body>
 </html>

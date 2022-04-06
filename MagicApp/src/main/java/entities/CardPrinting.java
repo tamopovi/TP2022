@@ -5,7 +5,7 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "CardPrinting.findAll", query = "select c from CardPrinting as c")
+        @NamedQuery(name = "CardPrinting.findAll", query = "select c from CardPrinting as c where  c.card.id = :cardId")
 })
 public class CardPrinting {
 

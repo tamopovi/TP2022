@@ -18,6 +18,8 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Model
 public class CardPrintings {
@@ -49,15 +51,13 @@ public class CardPrintings {
     @Getter
     private List<CardPrinting> allCardPrintings;
 
-    @Getter
-    private CardPrinting singleCardPrinting;
-
     @PostConstruct
     public void init() {
         Map<String, String> requestParameters =
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer cardId = Integer.parseInt(requestParameters.get("cardId"));
         this.card = cardsDAO.findOne(cardId);
+        loadAllCardPrintings(cardId);
     }
 
     @Transactional
@@ -66,18 +66,21 @@ public class CardPrintings {
         this.set = this.setsDAO.findOne(printedSetId);
         cardPrintingToCreate.setPrintedCardSet(this.set);
 
-        System.out.println("HERE CARD: " + cardPrintingToCreate.getCard());
-        System.out.println("HERE SET: " + cardPrintingToCreate.getPrintedCardSet());
-        cardPrintingToCreate.getCard().print();
-        cardPrintingToCreate.getPrintedCardSet().print();
+//        System.out.println("HERE CARD: " + cardPrintingToCreate.getCard());
+//        System.out.println("HERE SET: " + cardPrintingToCreate.getPrintedCardSet());
+//        cardPrintingToCreate.getCard().print();
+//        cardPrintingToCreate.getPrintedCardSet().print();
+        List<Card> currentSetCardList = this.set.getSetCardList();
+        List<Card> newSetCardList =
+                Stream.concat(currentSetCardList.stream(), Stream.of(this.card))
+                        .collect(Collectors.toList());
+        this.set.setSetCardList(newSetCardList);
+        this.setsDAO.persist(this.set);
         this.cardPrintingsDAO.persist (cardPrintingToCreate);
     }
 
-    private void loadAllCardPrintings() {
-        this.allCardPrintings = cardPrintingsDAO.loadAll();
+    private void loadAllCardPrintings(Integer byCardId) {
+        this.allCardPrintings = cardPrintingsDAO.loadAll(byCardId);
     }
 
-    private void loadSingleCardPrinting(Integer id){
-        this.singleCardPrinting = cardPrintingsDAO.findOne(id);
-    }
 }

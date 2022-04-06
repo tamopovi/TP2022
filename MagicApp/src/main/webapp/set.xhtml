@@ -11,11 +11,11 @@
     <h2>Set size:#{fn:length(setDetails.set.printedCardSet)}</h2>
     <br/>
     <br/>
-    <h2>Cards in set:#{fn:length(setDetails.set.printedCardSet)}</h2>
+    <h2>Cards in set:#{fn:length(setDetails.set.setCardList)}</h2>
     <ol>
-        <ui:repeat value="#{setDetails.set.printedCardSet}" var="cardPrinting">
+        <ui:repeat value="#{setDetails.set.setCardList}" var="card">
             <li>
-                <h:link value="#{cardPrinting.card.name}" outcome="cardDetails?cardId=#{cardPrinting.card.id}" />
+                <h:link value="#{card.name}" outcome="cardDetails?cardId=#{card.id}" />
             </li>
         </ui:repeat>
     </ol>
