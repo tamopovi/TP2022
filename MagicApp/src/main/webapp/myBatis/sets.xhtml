@@ -12,17 +12,15 @@
         Enter set code: <h:inputText value="#{setsMyBatis.setToCreate.code}" label="Set Code"/>
         <h:commandButton value="Create new set" actionListener="#{setsMyBatis.createSet}" action="sets?faces-redirect=true"/>
     </h:form>
-
     <h2>Sets:</h2>
     <ol>
         <ui:repeat value="#{setsMyBatis.allSets}" var="set">
             <li>
-                <h:link value="#{set.name}" outcome="set?setId=#{set.id}" />
+                <h:link value="#{set.name}" outcome="/set?setId=#{set.id}" />
             </li>
 
         </ui:repeat>
     </ol>
-
-    <h:link value="Back to Home" outcome="index.xhtml" />
+    <h:link value="Back to Home" outcome="/index.xhtml" />
 </h:body>
 </html>
