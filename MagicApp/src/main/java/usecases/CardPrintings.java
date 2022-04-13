@@ -60,18 +60,13 @@ public class CardPrintings {
         loadAllCardPrintings(cardId);
     }
 
-    @Transactional
+    @Transactional()
     public void createCardPrinting(){
         cardPrintingToCreate.setCard(this.card);
         this.set = this.setsDAO.findOne(printedSetId);
         cardPrintingToCreate.setPrintedCardSet(this.set);
         int currentSetSize = this.set.getSetCardList().size();
         cardPrintingToCreate.setSetNumber(currentSetSize+1);
-
-//        System.out.println("HERE CARD: " + cardPrintingToCreate.getCard());
-//        System.out.println("HERE SET: " + cardPrintingToCreate.getPrintedCardSet());
-//        cardPrintingToCreate.getCard().print();
-//        cardPrintingToCreate.getPrintedCardSet().print();
         List<Card> currentSetCardList = this.set.getSetCardList();
         List<Card> newSetCardList =
                 Stream.concat(currentSetCardList.stream(), Stream.of(this.card))
