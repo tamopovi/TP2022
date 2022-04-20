@@ -3,10 +3,10 @@ package usecases;
 
 
 import entities.Card;
-import entities.Set;
 import lombok.Getter;
 import lombok.Setter;
 import persistence.CardsDAO;
+import processors.interfaces.CardProcessor;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -19,6 +19,9 @@ public class Cards {
 
     @Inject
     private CardsDAO cardsDAO;
+
+    @Inject
+    private CardProcessor cardProcessor;
 
     @Getter
     @Setter
@@ -37,14 +40,19 @@ public class Cards {
 
     @Transactional
     public void createCard(){
-        this.cardsDAO.persist (cardToCreate);
+        System.out.println("CARD TO CREATE");
+        cardToCreate.print();
+        Card processedCard = cardProcessor.processCard(cardToCreate);
+        System.out.println("PROCESSED CARD");
+        processedCard.print();
+        this.cardsDAO.persist (processedCard);
     }
 
     private void loadAllCards(){
         this.allCards = cardsDAO.loadAll();
     }
 
-    private void loadSingleCard(Integer id){
-        this.singleCard = cardsDAO.findOne(id);
-    }
+//    private void loadSingleCard(Integer id){
+//        this.singleCard = cardsDAO.findOne(id);
+//    }
 }
