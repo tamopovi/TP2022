@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
 >
 <h:head/>
 <h:body>
@@ -10,6 +11,12 @@
     <h:form>
         <h:inputText value="#{cards.cardToCreate.name}" label="Card Name: "/>
         <h:commandButton value="Create new card" actionListener="#{cards.createCard}" action="cards?faces-redirect=true"/>
+    </h:form>
+    <h:form>
+        <h:outputText value="#{generateCardName.jerseyGenerationStatus}" />
+        <h:commandButton value="Generate card name?" disabled="#{generateCardName.nameGenerationRunning}" action="#{generateCardName.generateNewCardName()}">
+            <f:param value="#{cards.cardToCreate.name}" />
+        </h:commandButton>
     </h:form>
 
     <h2>Cards:</h2>

@@ -45,12 +45,11 @@ public class CardController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response update(CardDTO cardData, @PathParam("cardId") long id)
+    public Response update(CardDTO cardData, @PathParam("cardId") Integer id)
     {
         Card card = em.find(Card.class, id);
         if (card == null) {
-            throw new IllegalArgumentException("cardId "
-                    + id + " not found");
+            throw new IllegalArgumentException("cardId " + id + " not found");
         }
         card.setName(cardData.getName());
         em.merge(card);
