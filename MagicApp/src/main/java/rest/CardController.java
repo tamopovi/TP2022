@@ -1,6 +1,8 @@
 package rest;
 
 import entities.Card;
+import entities.CardPrinting;
+import entities.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 @Path("/card")
@@ -16,10 +19,16 @@ import javax.ws.rs.core.Response;
 public class CardController {
     @Inject
     private EntityManager em;
+
     @Path("/{cardId}")
     @GET
-    public Card find(@PathParam("cardId") long id) {
-        return em.find(Card.class, id);
+    public Response find(@PathParam("cardId") Integer id) {
+        Card cardEntity = em.find(Card.class, id);
+        CardDTO cardDTO = new CardDTO();
+        cardDTO.setName(cardEntity.getName());
+        cardDTO.setCardSets(cardEntity.getCardSets().stream().map(Set::getName).collect(Collectors.toList()));
+        cardDTO.setCardPrintings(cardEntity.getCardPrintings().stream().map(CardPrinting::getId).collect(Collectors.toList()));
+        return Response.ok(cardDTO).build();
     }
 
     @Path("/")

@@ -6,9 +6,9 @@
                       http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
         bean-discovery-mode="annotated">
 
-<!--    <interceptors>-->
-<!--        <class>vu.lt.interceptors.MethodLogger</class>-->
-<!--    </interceptors>-->
+    <interceptors>
+        <class>interceptors.MethodLogger</class>
+    </interceptors>
 <!--    <alternatives>-->
 <!--        <class>processors.WIPCardProcessor</class>-->
 <!--    </alternatives>-->
