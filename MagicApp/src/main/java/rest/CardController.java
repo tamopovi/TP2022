@@ -31,7 +31,6 @@ public class CardController {
         return Response.ok(cardDTO).build();
     }
 
-    @Path("/")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
