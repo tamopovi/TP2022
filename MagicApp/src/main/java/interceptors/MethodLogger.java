@@ -11,7 +11,15 @@ public class MethodLogger implements Serializable{
     @AroundInvoke
     public Object logMethodInvocation(InvocationContext context) throws Exception {
         System.out.println(context.getMethod().getName() + " CALLED!");
-        System.out.println("Sending BI event for" + context.getTarget().getClass().getSimpleName() + "...");
+        String loggedMethodName = context.getMethod().getName();
+        if(loggedMethodName.equals("createCard")) {
+            System.out.println("Sending BI event that the user has created a card");
+            // sending card created event...
+        }
+        if(loggedMethodName.equals("createSet")) {
+            System.out.println("Sending BI event that the user has created a set");
+            // sending set created event...
+        }
         return context.proceed();
     }
 }

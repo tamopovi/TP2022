@@ -3,6 +3,7 @@ package usecases;
 
 
 import entities.Set;
+import interceptors.LoggedInvocation;
 import lombok.Getter;
 import lombok.Setter;
 import persistence.SetsDAO;
@@ -35,6 +36,7 @@ public class Sets {
     }
 
     @Transactional
+    @LoggedInvocation
     public void createSet(){
         this.setsDAO.persist(setToCreate);
     }

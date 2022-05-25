@@ -3,6 +3,7 @@ package usecases;
 
 
 import entities.Card;
+import interceptors.LoggedInvocation;
 import lombok.Getter;
 import lombok.Setter;
 import persistence.CardsDAO;
@@ -39,11 +40,10 @@ public class Cards {
     }
 
     @Transactional
+    @LoggedInvocation
     public void createCard(){
-        System.out.println("CARD TO CREATE");
         cardToCreate.print();
         Card processedCard = cardProcessor.processCard(cardToCreate);
-        System.out.println("PROCESSED CARD");
         processedCard.print();
         this.cardsDAO.persist (processedCard);
     }
@@ -51,8 +51,4 @@ public class Cards {
     private void loadAllCards(){
         this.allCards = cardsDAO.loadAll();
     }
-
-//    private void loadSingleCard(Integer id){
-//        this.singleCard = cardsDAO.findOne(id);
-//    }
 }
