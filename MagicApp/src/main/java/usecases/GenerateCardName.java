@@ -31,7 +31,7 @@ public class GenerateCardName implements Serializable {
         return cardNameGenerationTask != null && !cardNameGenerationTask.isDone();
     }
 
-    public String getJerseyGenerationStatus() throws ExecutionException, InterruptedException {
+    public String getCardNameGenerationStatus() throws ExecutionException, InterruptedException {
         System.out.println("cardNameGenerationTask: " + cardNameGenerationTask);
         if (cardNameGenerationTask == null) {
             return null;

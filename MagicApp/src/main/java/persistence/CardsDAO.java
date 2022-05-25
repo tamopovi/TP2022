@@ -27,4 +27,8 @@ public class CardsDAO {
     public Card findOne(Integer id) {
         return em.find(Card.class, id);
     }
+
+    public Card update(Card card){
+        return em.merge(card);
+    }
 }

@@ -13,6 +13,11 @@ import java.util.Objects;
 })
 public class Card {
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
+
     public Card() {
 
     }

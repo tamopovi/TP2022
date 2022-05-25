@@ -8,10 +8,17 @@
       xsi:schemaLocation="http://omnifaces.org/ui ">
 <h:head/>
 <h:body>
-    <h2>Card name:#{cardDetails.card.name}</h2>
+    <h2>Card name:#{updateCardDetails.card.name}</h2>
     <h2>Amount of printings:#{fn:length(cardDetails.card.cardPrintings)}</h2>
     <br/>
-
+    <h:form>
+        <h:commandButton value="update" action="#{updateCardDetails.updateCardName()}">
+            <h:inputText value="#{updateCardDetails.card.name}" label="Card Name: "/>
+            <f:param name="cardId" value="#{updateCardDetails.card.id}" />
+        </h:commandButton>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+    <br/>
     <h2>Add card printing:</h2>
     <h:form>
         Select a set: <h:selectOneMenu value="#{cardPrintings.printedSetId}">

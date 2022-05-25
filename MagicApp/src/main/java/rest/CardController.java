@@ -7,6 +7,7 @@ import entities.Set;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -47,12 +48,16 @@ public class CardController {
     @Transactional
     public Response update(CardDTO cardData, @PathParam("cardId") Integer id)
     {
-        Card card = em.find(Card.class, id);
-        if (card == null) {
-            throw new IllegalArgumentException("cardId " + id + " not found");
+        try {
+            Card card = em.find(Card.class, id);
+            if (card == null) {
+                return Response.status(Response.Status.NOT_FOUND).build();
+            }
+            card.setName(cardData.getName());
+            em.merge(card);
+            return Response.ok(card).build();
+        } catch (OptimisticLockException ole) {
+            return Response.status(Response.Status.CONFLICT).build();
         }
-        card.setName(cardData.getName());
-        em.merge(card);
-        return Response.ok(card).build(); // low level API
     }
 }

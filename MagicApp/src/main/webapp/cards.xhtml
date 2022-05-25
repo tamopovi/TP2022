@@ -13,7 +13,7 @@
         <h:commandButton value="Create new card" actionListener="#{cards.createCard}" action="cards?faces-redirect=true"/>
     </h:form>
     <h:form>
-        <h:outputText value="#{generateCardName.jerseyGenerationStatus}" />
+        <h:outputText value="#{generateCardName.cardNameGenerationStatus}" />
         <h:commandButton value="Generate card name?" disabled="#{generateCardName.nameGenerationRunning}" action="#{generateCardName.generateNewCardName()}">
             <f:param value="#{cards.cardToCreate.name}" />
         </h:commandButton>

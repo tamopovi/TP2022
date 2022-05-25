@@ -11,6 +11,8 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.OptimisticLockException;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -30,6 +32,4 @@ public class CardDetails implements Serializable {
         Integer cardId = Integer.parseInt(requestParameters.get("cardId"));
         this.card = cardsDAO.findOne(cardId);
     }
-
-
 }
